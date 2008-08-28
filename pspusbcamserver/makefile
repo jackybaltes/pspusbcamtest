@@ -1,12 +1,16 @@
 TARGET = pspusbcamserver
 OBJS = pspusbcamserver.o pspusbcamserverexports.o
 
+# Use the kernel's small inbuilt libc
+USE_KERNEL_LIBC = 1
+# Use only kernel libraries
+USE_KERNEL_LIBS = 1
+
 INCDIR = ../include/
-CFLAGS = -O2 -G0 -Wall -Werror -fno-pic
+CFLAGS = -O2 -G0 -Wall -Werror -fno-builtin-printf
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
-LDFLAGS =
 LDFLAGS += -mno-crt0 -nostartfiles
 LIBDIR =
 LIBS = -lpspusbcam -lpsputility -lpspusb

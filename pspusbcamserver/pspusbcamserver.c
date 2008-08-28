@@ -27,7 +27,7 @@
 #include "pspusbcamserver.h"
 
 /* Define the module info section */
-PSP_MODULE_INFO("CAMERA TEST", 0, 1, 0);
+PSP_MODULE_INFO("CAMERA TEST", PSP_MODULE_KERNEL, 1, 0);
 
 /* Define the main thread's attribute value (optional) */
 PSP_MAIN_THREAD_ATTR( THREAD_ATTR_USER );
@@ -199,18 +199,3 @@ PspUsbCam_Server_Initialize( LogFunction logFunc )
   return SCE_KERNEL_ERROR_OK;
 }
 
-void 
-showLogMessage(const char * fmt, ...)
-{
-  char msg[256];
-  
-  va_list argp;
-
-  va_start(argp, fmt);
-  
-  vsnprintf(msg, sizeof(msg), fmt, argp);
-
-  va_end(argp);
-  
-  logFunction( msg );
-}
